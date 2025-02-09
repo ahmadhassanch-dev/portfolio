@@ -1,101 +1,105 @@
-import Image from "next/image";
+"use client"
+import React, { useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Home() {
+const HomePage = () => {
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const targetElement = document.querySelector(hash);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <nav className="fixed top-0 left-0 w-full bg-black text-white flex justify-between items-center p-4 z-50 shadow-md">
+        <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-red-600 flex items-center justify-center">
+          <Image src="/profile.jpg" alt="profile_pic" width={48} height={48} className="w-full h-full object-cover" />
+        </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="text-xl ml-28 font-extrabold cursor-pointer">
+          Hassan/ <span className="text-red-600">حسن</span> / हसन
+        </div>
+
+        <div className="flex gap-4 font-semibold cursor-pointer">
+          <Link href="#home" legacyBehavior>
+            <a className="hover:text-red-600 transition ease-in-out duration-300">Home</a>
+          </Link>
+          <Link href="#about" legacyBehavior>
+            <a className="hover:text-red-600 transition ease-in-out duration-300">About Me</a>
+          </Link>
+          <Link href="#skills" legacyBehavior>
+            <a className="hover:text-red-600 transition ease-in-out duration-300">Skills</a>
+          </Link>
+          <Link href={"/contact"} className="hover:text-red-600 transition ease-in-out duration-300">Contact</Link>
+        </div>
+      </nav>
+
+      <main id="home" className="flex flex-col lg:flex-row items-center justify-center text-center bg-black text-white p-16 lg:p-24">
+        <div className="lg:w-1/3 flex justify-center">
+          <div className="w-56 h-56 lg:w-64 lg:h-64 rounded-full border-4 border-red-600 overflow-hidden flex items-center justify-center">
+            <Image src="/profile.jpg" alt="Ahmad Hassan" width={256} height={256} className="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <div className="lg:w-2/3 flex flex-col mt-16 items-center lg:items-start lg:text-left p-6 lg:p-12">
+          <h1 className="text-5xl lg:text-6xl font-extrabold text-red-600">Ahmad Hassan</h1>
+          <p className="text-xl lg:text-2xl font-semibold mt-3 text-red-600">Full-Stack Developer | AI Enthusiast</p>
+          <p className="max-w-2xl mt-4 text-gray-300 text-lg lg:text-xl">
+            Passionate about building modern, scalable web applications and exploring AI-driven solutions.
+          </p>
+          <button className="mt-6 px-8 py-3 bg-red-600 text-white font-bold text-lg lg:text-xl rounded-lg hover:bg-red-700 transition-all">
+            View My Work
+          </button>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+      <div id="about" className="p-8 lg:p-16 text-center lg:text-left bg-black text-white">
+        <h2 className="text-3xl mt-20 lg:text-4xl font-semibold text-red-600">About Me</h2>
+        <h3 className="mt-6 text-2xl lg:text-3xl font-semibold text-gray-300">Background</h3>
+        <p className="mt-2 text-gray-300 text-lg lg:text-xl">
+          Born and raised in Faisalabad, Pakistan, Ahmad Hassan is a 15-year-old student currently studying in the 9th grade. He has been deeply passionate about software development from an early age, exploring various aspects of programming and technology.
+        </p>
+        <h3 className="mt-8 text-2xl lg:text-3xl font-semibold text-gray-300">Full-Stack Development Journey</h3>
+        <p className="mt-2 text-gray-300 text-lg lg:text-xl">
+          As a dedicated Full-Stack Web Developer, he is skilled in developing modern, responsive, and scalable applications. With proficiency in TypeScript, Next.js, and AI-powered solutions, Ahmad is constantly pushing the boundaries of web development. He enjoys working on both the front-end and back-end, ensuring seamless user experiences while integrating the latest technologies.
+        </p>
+        <h3 className="mt-8 text-2xl lg:text-3xl font-semibold text-gray-300">Passion for Learning</h3>
+        <p className="mt-2 text-gray-300 text-lg lg:text-xl">
+          His journey in software development has been fueled by curiosity and a passion for learning. Ahmad is always exploring new technologies and frameworks to expand his expertise, with a keen interest in artificial intelligence and automation. Though he is not currently working professionally, he is actively honing his skills and contributing to various projects that showcase his abilities.
+        </p>
+      </div>
+
+      <div id="skills" className="p-8 lg:p-16 text-center lg:text-left bg-black text-white">
+        <h2 className="text-3xl mt-20 lg:text-4xl font-semibold text-red-600">Skills</h2>
+        <ul className="mt-6 text-gray-300 text-lg lg:text-xl grid grid-cols-2 lg:grid-cols-3 gap-4">
+          <li className="hover:text-red-600 transition ease-in-out duration-300">Next.js</li>
+          <li className="hover:text-red-600 transition ease-in-out duration-300">JavaScript</li>
+          <li className="hover:text-red-600 transition ease-in-out duration-300">TypeScript</li>
+          <li className="hover:text-red-600 transition ease-in-out duration-300">Python</li>
+          <li className="hover:text-red-600 transition ease-in-out duration-300">LangChain</li>
+          <li className="hover:text-red-600 transition ease-in-out duration-300">Langraph</li>
+          <li className="hover:text-red-600 transition ease-in-out duration-300">Crew AI</li>
+          <li className="hover:text-red-600 transition ease-in-out duration-300">React.js</li>
+          <li className="hover:text-red-600 transition ease-in-out duration-300">Tailwind CSS</li>
+        </ul>
+      </div>
+    
+    </>
   );
-}
+};
+
+export default HomePage;
