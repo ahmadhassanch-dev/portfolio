@@ -6,8 +6,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black text-gray-300 py-8 px-6 text-center">
-      <div className="flex justify-center space-x-8">
+    <footer className="bg-black text-gray-300 py-4 md:py-8 px-4 md:px-6 text-center">
+      <div className="flex justify-center space-x-4 md:space-x-8">
         <FooterLink
           href="#"
           icon={<FaDiscord />}
@@ -24,7 +24,7 @@ const Footer = () => {
           label="GitHub"
         />
       </div>
-      <p className="mt-6 text-gray-500 text-sm">
+      <p className="mt-4 md:mt-6 text-gray-500 text-sm">
         &copy; {currentYear} Ahmad Hassan. All rights reserved.
       </p>
     </footer>
