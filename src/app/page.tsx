@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import Link from "next/link"
 
 const HomePage = () => {
   useEffect(() => {
@@ -38,9 +39,13 @@ const HomePage = () => {
           <p className="max-w-2xl mt-2 md:mt-4 text-gray-300 text-base md:text-lg lg:text-xl">
             Passionate about building modern, scalable web applications and exploring AI-driven solutions.
           </p>
+          
+          <Link href="/projects">
+         
           <button className="mt-4 md:mt-6 px-6 py-2 md:px-8 md:py-3 bg-red-600 text-white font-bold text-base md:text-lg lg:text-xl rounded-lg hover:bg-red-700 transition-all">
             View My Work
           </button>
+          </Link>
         </div>
       </main>
 
