@@ -47,6 +47,8 @@ const Navbar = () => {
           isMobileMenuOpen ? "flex py-4 space-y-3 md:space-y-0" : "hidden md:flex"
         }`}
       >
+        <Link href="/" className="hover:text-red-600 transition px-4 py-2">
+        Home</Link>
         <Link href="#about" className="hover:text-red-600 transition px-4 py-2">
           About Me
         </Link>
