@@ -39,6 +39,35 @@ const Projects = () => {
               </Link>
             </div>
           </div>
+
+          {/* Textile Digital Printing Solution Project Card */}
+          <div className="bg-black border border-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 w-full md:w-3/4">
+            <div className="relative w-full h-48 overflow-hidden rounded-t-lg">
+              <Image
+                src={"/project_02.png"}
+                alt="Textile Digital Printing Solution"
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
+            </div>
+            <div className="p-4">
+              <h2 className="text-2xl font-bold mb-2 text-white">
+                Textile Digital Printing Solution
+              </h2>
+              <p className="text-gray-400 mb-4">
+                A digital printing solution designed for the textile industry,
+                showcasing innovative designs and patterns.
+              </p>
+              <Link
+                href="https://baogeetextile.com"
+                target="_blank"
+                className="inline-block bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-full transition duration-300"
+              >
+                View Project
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
